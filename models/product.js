@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      toDoList.belongsTo(models.category, { foreignKey: 'categoryId' });
+      product.belongsTo(models.category, { foreignKey: 'categoryId' });
     }
   }
   product.init({
