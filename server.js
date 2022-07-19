@@ -1,9 +1,10 @@
 
 const express = require("express");
+const cors = require("cors");
 const productRouter = require ("./router/products")
 const app = express();
+app.use(cors())
 const PORT = 4000;
-
 
 //test the server
 //http POST :4000/echo hello=world
@@ -11,11 +12,8 @@ app.post("/echo", (req, res) => {
     res.json(req.body);
   });
 
-//http://localhost:4000
-app.get("/", (req, res) => res.send("Hello"));
-app.use(express.json())
-
- // app.use(cors())
+ app.use(express.json());
+ 
 
   app.use("/products", productRouter);
 
