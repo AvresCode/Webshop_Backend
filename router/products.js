@@ -38,7 +38,7 @@ router.get("/:id", async (req, res, next) => {
 });
 
 //post endpoint to create a review
-
+// http POST :4000/products/3/review userId=1 rating=4 text='high quality'
 router.post("/:id/review", async (req, res, next) => {
   try {
     const productId = req.params.id;
