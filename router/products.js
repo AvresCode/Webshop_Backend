@@ -6,6 +6,7 @@ const Review = require("../models").review;
 const router = new Router();
 
 //http :4000/products
+
 router.get("/", async (req, res, next) => {
   try {
     const products = await Product.findAll({ include: Category });
@@ -23,7 +24,7 @@ router.get("/:id", async (req, res, next) => {
     const productId = req.params.id;
 
     const specificProduct = await Product.findByPk(productId, {
-      include: Category,
+      include: [Category, Review],
     });
 
     if (!specificProduct) {
@@ -63,5 +64,25 @@ router.post("/:id/review", async (req, res, next) => {
     next(e);
   }
 });
+/*
+// get review for specific product
+//http :4000/products/id/review
+router.get("/:id/review", async (req, res, next) => {
+  try {
+    const productId = req.params.id;
+
+    const specificProduct = await Product.findByPk(productId);
+    const reviewForProduct = await Review.findAll({ include: specificProduct });
+
+    if (!reviewForProduct) {
+      res.status(404).send("There is no review yet");
+    } else {
+      res.send(reviewForProduct);
+    }
+  } catch (e) {
+    console.log(e.message);
+    next(e);
+  }
+}); */
 
 module.exports = router;
