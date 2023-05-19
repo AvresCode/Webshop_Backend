@@ -1,7 +1,7 @@
-'use strict';
+"use strict";
 
 module.exports = {
-  async up (queryInterface, Sequelize) {
+  async up(queryInterface, Sequelize) {
     await queryInterface.bulkInsert("categories", [
       { title: "Electronics", createdAt: new Date(), updatedAt: new Date() },
       { title: "Jewelery", createdAt: new Date(), updatedAt: new Date() },
